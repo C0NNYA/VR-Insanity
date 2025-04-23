@@ -5,25 +5,21 @@ using UnityEngine;
 public class TriggerSpawn : MonoBehaviour
 {
     public GameObject enemy;
-    public Transform enemyPos;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Transform[] enemySpawnPoints;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.CompareTag("Player"))
         {
-            Invoke("EnemySpawner", 0.5f);
+            EnemySpawner();
             Destroy(gameObject);
         }
     }
     void EnemySpawner()
     {
-        Instantiate(enemy, enemyPos.position, enemyPos.rotation);
+        foreach (Transform spawnPoint in enemySpawnPoints)
+        {
+            Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
+        }
     }
 }
