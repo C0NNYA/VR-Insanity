@@ -17607,14 +17607,14 @@ MonoBehaviour:
   player: {fileID: 441087507}
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 8
   health: 5
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 10
-  timeBetweenAttacks: 1.5
+  timeBetweenAttacks: 2.1
   projectile: {fileID: 0}
   sightRange: 15
   attackRange: 2
