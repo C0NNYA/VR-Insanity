@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
+    public float damageCooldown = 2f;
+    private bool canTakeDamage = true;
 
-    void Start()
+    public bool CanBeDamaged()
     {
-        
+        return canTakeDamage;
     }
 
-    void Update()
+    public void TakeDamage(int dmg)
     {
-        
+        if (canTakeDamage)
+        {
+            PlayerTakeDmg(dmg);
+            StartCoroutine(DamageCooldown());
+        }
     }
 
     private void PlayerTakeDmg(int dmg)
@@ -23,5 +29,12 @@ public class PlayerBehaviour : MonoBehaviour
     private void PlayerHeal(int healing)
     {
         GameManager.gameManager.playerHealth.HealUnit(healing);
+    }
+
+    private IEnumerator DamageCooldown()
+    {
+        canTakeDamage = false;
+        yield return new WaitForSeconds(damageCooldown);
+        canTakeDamage = true;
     }
 }
