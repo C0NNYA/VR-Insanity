@@ -21941,6 +21941,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   health: 5
+  deathSound: {fileID: 8300000, guid: 858b48224b1f5b044baed731b65bdee0, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 10
   timeBetweenAttacks: 2.1
@@ -25463,6 +25464,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   health: 5
+  deathSound: {fileID: 8300000, guid: 14b0257e3056c4c49a57e0d0960da70c, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 10
   timeBetweenAttacks: 2.1

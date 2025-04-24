@@ -12,6 +12,10 @@ public class EnemyAiTutorial : MonoBehaviour
 
     public float health;
 
+    public AudioClip deathSound;
+    private AudioSource audioSource;
+
+
     //Patroling
     public Vector3 walkPoint;
     bool walkPointSet;
@@ -30,7 +34,9 @@ public class EnemyAiTutorial : MonoBehaviour
     {
         player = GameObject.Find("PlayerObj").transform;
         agent = GetComponent<NavMeshAgent>();
+        audioSource = GetComponent<AudioSource>();
     }
+
 
     private void Update()
     {
@@ -107,8 +113,15 @@ public class EnemyAiTutorial : MonoBehaviour
     }
     private void DestroyEnemy()
     {
-        Destroy(gameObject);
+        if (deathSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(deathSound);
+        }
+
+        // Delay destruction so the sound can finish
+        Destroy(gameObject, deathSound.length);
     }
+
 
     private void OnDrawGizmosSelected()
     {
